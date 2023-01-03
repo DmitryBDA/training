@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Patterns\ContainerProperty\Classes\BlogPost;
 use App\Patterns\Delegation\Messenger;
+use App\Patterns\EventChannel\Classes\EventChannel;
+use App\Patterns\EventChannel\Classes\Publisher;
+use App\Patterns\EventChannel\Classes\Subscriber;
 
 class PatternsController extends Controller
 {
@@ -38,5 +41,28 @@ class PatternsController extends Controller
         \Debugbar::info($messenger);
 
         return 'pattern delegation';
+    }
+
+    public function eventChannel(): string
+    {
+        $eventChannel = new EventChannel();
+
+        $bananaNews = new Publisher('banana', $eventChannel);
+        $tomatoNews = new Publisher('tomato', $eventChannel);
+
+        $sansa = new Subscriber('Sansa Stark');
+        $snow = new Subscriber('Jon Snow');
+
+        $eventChannel->subscribe('banana', $sansa);
+        $eventChannel->subscribe('tomato', $snow);
+
+        /**
+         * Поставщики публикуют данные, и происходит уведомление всех кто подписан на данные темы
+         */
+        $bananaNews->publish('Пришли 30 коробок бананов');
+        $tomatoNews->publish('Свежие помидоры');
+
+
+        return 'pattern eventChannel';
     }
 }

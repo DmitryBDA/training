@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/patterns/containerProperty', [PatternsController::class, 'containerProperty']);
 Route::get('/patterns/delegation', [PatternsController::class, 'delegation']);
+Route::get('/patterns/eventChannel', [PatternsController::class, 'eventChannel']);
