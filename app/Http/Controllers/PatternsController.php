@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Patterns\AbstractFactory\Factories\ModerFactory;
+use App\Patterns\AbstractFactory\Factories\VictorianFactory;
+use App\Patterns\AbstractFactory\SwitchFactory;
 use App\Patterns\ContainerProperty\Classes\BlogPost;
 use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
@@ -64,5 +67,23 @@ class PatternsController extends Controller
 
 
         return 'pattern eventChannel';
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function abstractFactory(): string
+    {
+
+        //$furnitureFactory = (new SwitchFactory())->getFactory('modern');
+        $furnitureFactory = (new SwitchFactory())->getFactory('victorian');
+
+        $chair = $furnitureFactory->createChair();
+        $sofa = $furnitureFactory->createSofa();
+
+        $chair->getDescription();
+        $sofa->getDescription();
+
+        return 'pattern abstractFactory';
     }
 }
