@@ -9,6 +9,7 @@ use App\Patterns\EventChannel\Classes\EventChannel;
 use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
 use App\Patterns\FactoryMethod\RoadLogistic;
+use App\Patterns\FactoryMethod\SeaLogistic;
 
 class PatternsController extends Controller
 {
@@ -88,8 +89,8 @@ class PatternsController extends Controller
 
     public function factoryMethod(): string
     {
-        //$logistic = new SeaLogistic();
-        $logistic = new RoadLogistic();
+        $logistic = new SeaLogistic();
+        //$logistic = new RoadLogistic();
 
         $logistic->planDelivery();
 
