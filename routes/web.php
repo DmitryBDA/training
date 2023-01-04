@@ -24,3 +24,4 @@ Route::get('/patterns/eventChannel', [PatternsController::class, 'eventChannel']
 Route::get('/patterns/abstractFactory', [PatternsController::class, 'abstractFactory']);
 Route::get('/patterns/factoryMethod', [PatternsController::class, 'factoryMethod']);
 Route::get('/patterns/staticFactory', [PatternsController::class, 'staticFactory']);
+Route::get('/patterns/simpleFactory', [PatternsController::class, 'simpleFactory']);

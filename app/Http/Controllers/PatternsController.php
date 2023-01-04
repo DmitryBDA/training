@@ -10,6 +10,7 @@ use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
 use App\Patterns\FactoryMethod\RoadLogistic;
 use App\Patterns\FactoryMethod\SeaLogistic;
+use App\Patterns\SimpleFactory\SimpleFactory;
 use App\Patterns\StaticFactory\StaticFactory;
 
 class PatternsController extends Controller
@@ -105,5 +106,15 @@ class PatternsController extends Controller
 
         \Debugbar::info($messenger);
         return 'pattern staticFactory';
+    }
+
+    public function simpleFactory(): string
+    {
+        $factory = new SimpleFactory();
+        //$messenger = $factory->build('email');
+        $messenger = $factory->build('sms');
+
+        \Debugbar::info($messenger);
+        return 'pattern simpleFactory';
     }
 }
