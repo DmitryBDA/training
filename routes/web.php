@@ -22,3 +22,4 @@ Route::get('/patterns/containerProperty', [PatternsController::class, 'container
 Route::get('/patterns/delegation', [PatternsController::class, 'delegation']);
 Route::get('/patterns/eventChannel', [PatternsController::class, 'eventChannel']);
 Route::get('/patterns/abstractFactory', [PatternsController::class, 'abstractFactory']);
+Route::get('/patterns/factoryMethod', [PatternsController::class, 'factoryMethod']);

@@ -10,6 +10,8 @@ use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
 use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
+use App\Patterns\FactoryMethod\Classes\RoadLogistic;
+use App\Patterns\FactoryMethod\Classes\SeaLogistic;
 
 class PatternsController extends Controller
 {
@@ -85,5 +87,15 @@ class PatternsController extends Controller
         $sofa->getDescription();
 
         return 'pattern abstractFactory';
+    }
+
+    public function factoryMethod(): string
+    {
+        //$logistic = new SeaLogistic();
+        $logistic = new RoadLogistic();
+
+        $logistic->planDelivery();
+
+        return 'pattern factoryMethod';
     }
 }
