@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Patterns\AbstractFactory\Factories\ModerFactory;
-use App\Patterns\AbstractFactory\Factories\VictorianFactory;
 use App\Patterns\AbstractFactory\SwitchFactory;
 use App\Patterns\ContainerProperty\Classes\BlogPost;
 use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
 use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
+use App\Patterns\FactoryMethod\RoadLogistic;
 
 class PatternsController extends Controller
 {
@@ -85,5 +84,15 @@ class PatternsController extends Controller
         $sofa->getDescription();
 
         return 'pattern abstractFactory';
+    }
+
+    public function factoryMethod(): string
+    {
+        //$logistic = new SeaLogistic();
+        $logistic = new RoadLogistic();
+
+        $logistic->planDelivery();
+
+        return 'pattern factoryMethod';
     }
 }
