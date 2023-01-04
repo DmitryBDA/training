@@ -10,6 +10,7 @@ use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
 use App\Patterns\FactoryMethod\RoadLogistic;
 use App\Patterns\FactoryMethod\SeaLogistic;
+use App\Patterns\StaticFactory\StaticFactory;
 
 class PatternsController extends Controller
 {
@@ -95,5 +96,14 @@ class PatternsController extends Controller
         $logistic->planDelivery();
 
         return 'pattern factoryMethod';
+    }
+
+    public function staticFactory(): string
+    {
+        $messenger = StaticFactory::build('email');
+        //$messenger = StaticFactory::build('sms');
+
+        \Debugbar::info($messenger);
+        return 'pattern staticFactory';
     }
 }
