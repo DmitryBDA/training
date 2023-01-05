@@ -10,6 +10,7 @@ use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
 use App\Patterns\FactoryMethod\RoadLogistic;
 use App\Patterns\FactoryMethod\SeaLogistic;
+use App\Patterns\Multiton\Multiton;
 use App\Patterns\SimpleFactory\SimpleFactory;
 use App\Patterns\Singleton\Singleton;
 use App\Patterns\StaticFactory\StaticFactory;
@@ -130,5 +131,20 @@ class PatternsController extends Controller
         \Debugbar::info($arr);
 
         return 'pattern singleton';
+    }
+
+    public function multiton(): string
+    {
+        $arr = [];
+
+        $arr[] = Multiton::getInstance('mysql');
+        $arr[] = Multiton::getInstance('postgres');
+        $arr[] = Multiton::getInstance('mysql');
+        $arr[] = Multiton::getInstance('postgres');
+        $arr[] = Multiton::getInstance('postgres');
+
+        \Debugbar::info($arr);
+
+        return 'pattern multiton';
     }
 }
