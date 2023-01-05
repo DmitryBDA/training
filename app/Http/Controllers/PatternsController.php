@@ -11,6 +11,7 @@ use App\Patterns\EventChannel\Classes\Subscriber;
 use App\Patterns\FactoryMethod\RoadLogistic;
 use App\Patterns\FactoryMethod\SeaLogistic;
 use App\Patterns\SimpleFactory\SimpleFactory;
+use App\Patterns\Singleton\Singleton;
 use App\Patterns\StaticFactory\StaticFactory;
 
 class PatternsController extends Controller
@@ -116,5 +117,18 @@ class PatternsController extends Controller
 
         \Debugbar::info($messenger);
         return 'pattern simpleFactory';
+    }
+
+    public function singleton(): string
+    {
+        $arr = [];
+        $singleton =  Singleton::getInstance();
+        $arr[] = $singleton;
+        $singleton2 =  Singleton::getInstance();
+        $singleton2->a = 45;
+        $arr[] = $singleton;
+        \Debugbar::info($arr);
+
+        return 'pattern singleton';
     }
 }

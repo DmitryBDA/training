@@ -25,3 +25,4 @@ Route::get('/patterns/abstractFactory', [PatternsController::class, 'abstractFac
 Route::get('/patterns/factoryMethod', [PatternsController::class, 'factoryMethod']);
 Route::get('/patterns/staticFactory', [PatternsController::class, 'staticFactory']);
 Route::get('/patterns/simpleFactory', [PatternsController::class, 'simpleFactory']);
+Route::get('/patterns/singleton', [PatternsController::class, 'singleton']);
