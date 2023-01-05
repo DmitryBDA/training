@@ -2,10 +2,17 @@
 
 namespace App\Providers;
 
+use App\Patterns\Adapter\Classes\EmailNotification;
+use App\Patterns\Adapter\Classes\OtherEmailNotification;
+use App\Patterns\Adapter\Classes\OtherEmailNotificationAdapter;
+use App\Patterns\Adapter\Interfaces\iNotification;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public array $bindings = [
+       iNotification::class => OtherEmailNotificationAdapter::class
+    ];
     /**
      * Register any application services.
      *

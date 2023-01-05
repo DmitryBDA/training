@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Patterns\AbstractFactory\SwitchFactory;
+use App\Patterns\Adapter\Interfaces\iNotification;
 use App\Patterns\ContainerProperty\Classes\BlogPost;
 use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
@@ -146,5 +147,14 @@ class PatternsController extends Controller
         \Debugbar::info($arr);
 
         return 'pattern multiton';
+    }
+
+    public function adapter(): string
+    {
+        $emailNotification = app(iNotification::class);
+
+        $emailNotification->send('Привет');
+
+        return 'pattern adapter';
     }
 }
