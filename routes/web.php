@@ -28,3 +28,4 @@ Route::get('/patterns/simpleFactory', [PatternsController::class, 'simpleFactory
 Route::get('/patterns/singleton', [PatternsController::class, 'singleton']);
 Route::get('/patterns/multiton', [PatternsController::class, 'multiton']);
 Route::get('/patterns/adapter', [PatternsController::class, 'adapter']);
+Route::get('/patterns/facade', [PatternsController::class, 'facade']);

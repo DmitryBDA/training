@@ -9,6 +9,7 @@ use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
 use App\Patterns\EventChannel\Classes\Publisher;
 use App\Patterns\EventChannel\Classes\Subscriber;
+use App\Patterns\Facade\MarketPlace;
 use App\Patterns\FactoryMethod\RoadLogistic;
 use App\Patterns\FactoryMethod\SeaLogistic;
 use App\Patterns\Multiton\Multiton;
@@ -156,5 +157,15 @@ class PatternsController extends Controller
         $emailNotification->send('Привет');
 
         return 'pattern adapter';
+    }
+
+    public function facade()
+    {
+        $marketPlace = new MarketPlace();
+
+        $marketPlace->productReceipt();
+        \Debugbar::info('------------------------');
+        $marketPlace->productRelease();
+        return 'pattern facade';
     }
 }
