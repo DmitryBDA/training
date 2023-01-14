@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Patterns\AbstractFactory\SwitchFactory;
 use App\Patterns\Adapter\Interfaces\iNotification;
+use App\Patterns\Composite\Classes\Box;
+use App\Patterns\Composite\Classes\Product;
 use App\Patterns\ContainerProperty\Classes\BlogPost;
 use App\Patterns\Delegation\Messenger;
 use App\Patterns\EventChannel\Classes\EventChannel;
@@ -159,7 +161,7 @@ class PatternsController extends Controller
         return 'pattern adapter';
     }
 
-    public function facade()
+    public function facade(): string
     {
         $marketPlace = new MarketPlace();
 
@@ -167,5 +169,35 @@ class PatternsController extends Controller
         \Debugbar::info('------------------------');
         $marketPlace->productRelease();
         return 'pattern facade';
+    }
+
+    public function composite(): string
+    {
+        $boxMain = new Box();
+
+        $product1 = new Product(50);
+        $product2 = new Product(60);
+
+        $boxMain->addProduct($product1);
+        $boxMain->addProduct($product2);
+
+        $product3 = new Product(10);
+        $product4 = new Product(20);
+        $box1 = new Box();
+        $box1->addProduct($product3);
+        $box1->addProduct($product4);
+
+        $product5 = new Product(2);
+        $product6 = new Product(6);
+        $box2 = new Box();
+        $box2->addProduct($product5);
+        $box2->addProduct($product6);
+
+        $box1->addProduct($box2);
+
+        $boxMain->addProduct($box1);
+
+        \Debugbar::info($boxMain->calcPrice());
+        return 'pattern composite';
     }
 }
